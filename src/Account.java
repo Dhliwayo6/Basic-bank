@@ -9,9 +9,11 @@ class InsufficientFundsException extends RuntimeException {
 public class Account {
 
     public double balance;
+    public String accountId;
 
     // Constructor to initialize initial account balance
-    public Account() {
+    public Account(String accountId) {
+        this.accountId = accountId;
         this.balance = 0.0;
     }
 
@@ -49,19 +51,19 @@ public class Account {
     //main method
     public static void main(String[] args) {
 
-        Account account1 = new Account();
-        Account account2 = new Account();
-        Account account3 = new Account();
+        Account account1 = new Account("ACC001");
+//        Account account2 = new Account();
+//        Account account3 = new Account();
 
-        System.out.println("Initial balance: " + account1.getBalance());
+        System.out.println("Initial balance: " + account1.getBalance() + " for account " + account1.accountId);
 
         account1.deposit(500);
-        account3.deposit(34);
+//        account3.deposit(34);
 
-        System.out.println("Current balance: " + account1.getBalance());
+        System.out.println("Current balance: " + account1.getBalance() + " for account " + account1.accountId);
 
-        account1.withdraw(600);
+        account1.withdraw(200);
 
-        System.out.println("Remaining balance: " + account1.getBalance());
+        System.out.println("Remaining balance: " +  account1.getBalance() + " for account " + account1.accountId);
     }
 }
