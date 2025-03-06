@@ -1,20 +1,21 @@
 public class Account {
 
-    public int limit;
+//    public int limit;
     public double balance;
 
     public Account() {
-        this.limit = 1000;
+//        this.limit = 1000;
         this.balance = 0.0;
     }
 
-    public void deposit(int amount) {
+    public void deposit(double amount) {
+
         balance += amount;
     }
 
     public void withdraw(double amount) {
         if ((balance - amount) < 0) {
-            throw new IllegalArgumentException("Balance cannot be negative!");
+            throw new IllegalArgumentException("Insufficient funds!");
             
         }
         balance -= amount;
@@ -38,7 +39,7 @@ public class Account {
 
         System.out.println("Current balance: " + account1.getBalance());
 
-        account1.withdraw(237.0);
+        account1.withdraw(600);
 
         System.out.println("Remaining balance: " + account1.getBalance());
 
