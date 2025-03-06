@@ -1,3 +1,9 @@
+//class InsufficientFundsException extends RuntimeException {
+//
+//
+//}
+
+
 public class Account {
 
 //    public int limit;
@@ -17,7 +23,11 @@ public class Account {
     }
 
     public void withdraw(double amount) {
-        
+
+        if (amount < 0) {
+            throw new IllegalArgumentException("Withdrawal amount cannot be negative");
+        }
+
 
         if ((balance - amount) < 0) {
             throw new IllegalArgumentException("Insufficient funds!");
