@@ -10,10 +10,15 @@ public class Account {
 
     public void deposit(double amount) {
 
+        if (amount < 0) {
+            throw new IllegalArgumentException("Deposit cannot be negative amount");
+        }
         balance += amount;
     }
 
     public void withdraw(double amount) {
+        
+
         if ((balance - amount) < 0) {
             throw new IllegalArgumentException("Insufficient funds!");
             
