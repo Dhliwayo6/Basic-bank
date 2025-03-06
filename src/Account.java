@@ -1,46 +1,52 @@
-//class InsufficientFundsException extends RuntimeException {
-//
-//
-//}
+class InsufficientFundsException extends RuntimeException {
 
+    public InsufficientFundsException(String message) {
+        // super keyword calls RuntimeException constructor
+        super(message);
+    }
+}
 
 public class Account {
 
-//    public int limit;
     public double balance;
 
+    // Constructor to initialize initial account balance
     public Account() {
-//        this.limit = 1000;
         this.balance = 0.0;
     }
 
+    // method to deposit money into accounts
     public void deposit(double amount) {
 
+        // Throw an exception if deposit is negative
         if (amount < 0) {
             throw new IllegalArgumentException("Deposit cannot be negative amount");
         }
         balance += amount;
     }
 
+    //method to withdraw money from account
     public void withdraw(double amount) {
 
+        // throw an exception if withdrawal amount is negative
         if (amount < 0) {
             throw new IllegalArgumentException("Withdrawal amount cannot be negative");
         }
 
-
+        // throw custom InsufficientFundsException if withdrawal amount is greater than balance
         if ((balance - amount) < 0) {
-            throw new IllegalArgumentException("Insufficient funds!");
-            
+            throw new InsufficientFundsException("Insufficient funds!");
         }
         balance -= amount;
     }
 
+    // getter method
     public double getBalance() {
         return this.balance;
     }
 
 
+    //main method
     public static void main(String[] args) {
 
         Account account1 = new Account();
@@ -57,7 +63,5 @@ public class Account {
         account1.withdraw(600);
 
         System.out.println("Remaining balance: " + account1.getBalance());
-
-
     }
 }
